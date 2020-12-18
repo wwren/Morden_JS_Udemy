@@ -42,6 +42,6 @@ const post3 = {title: 'Post three', body: 'This is post three'};
 
 // createPost(post3, getPosts);
 
-createPost(post3).then(getPosts).catch(function(err){
+createPost(post3).then(getPosts).catch(function(err){ //first createPost() & then getPost(), if there is error, catch the error.
   console.log(err);
 });
