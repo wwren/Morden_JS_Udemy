@@ -1,51 +1,28 @@
-document.getElementById('button').addEventListener('click', loadData);
+const http = new EasyHttp;
 
-function loadData() {
-  // Create an XHR Object
-  const xhr = new XMLHttpRequest();
+//Get users
+// const data = http.get('https://jsonplaceholder.typicode.com/users')
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err));
 
-  // OPEN
-  xhr.open('GET', 'data.txt', true);
-
-  // console.log('READYSTATE', xhr.readyState);
-
-  // Optional - Used for spinners/loaders
-  xhr.onprogress = function(){
-    console.log('READYSTATE', xhr.readyState);
+  //User data 
+  const userData = {
+    name: 'John Doe',
+    username: 'johndoe',
+    email: 'jdoe@gmail.com'
   }
 
-  xhr.onload = function(){
-    console.log('READYSTATE', xhr.readyState);
-    if(this.status === 200) {
-      // console.log(this.responseText);
-      document.getElementById('output').innerHTML = `<h1>${this.responseText}</h1>`;
-    }
-  }
+  //Post data
+// http.post('https://jsonplaceholder.typicode.com/users', userData)
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err));
 
-  // xhr.onreadystatechange = function() {
-  //   console.log('READYSTATE', xhr.readyState);
-  //   if(this.status === 200 && this.readyState === 4){
-  //     console.log(this.responseText);
-  //   }
-  // }
+  //Put data
+// http.put('https://jsonplaceholder.typicode.com/users/3', userData)
+// .then(data => console.log(data))
+// .catch(err => console.log(err));
 
-  xhr.onerror = function() {
-    console.log('Request error...');
-  }
-
-  xhr.send();
-
-
-    // readyState Values
-    // 0: request not initialized 
-    // 1: server connection established
-    // 2: request received 
-    // 3: processing request 
-    // 4: request finished and response is ready
-
-
-  // HTTP Statuses
-  // 200: "OK"
-  // 403: "Forbidden"
-  // 404: "Not Found"
-}
+// Delete data
+http.delete('https://jsonplaceholder.typicode.com/users/2')
+  .then(msg => console.log(msg))
+  .catch(err => console.log(err));
